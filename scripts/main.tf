@@ -90,17 +90,7 @@ resource "azurerm_network_security_group" "NSG" {
     source_address_prefix = "*"
     destination_address_prefix = "*"
   }
-    security_rule {
-    name                 = "Allow_HTTP_Sonar"
-    priority              = 102
-    access                = "Allow"
-    direction             = "Inbound"
-    protocol              = "Tcp"
-    source_port_range    = "*"
-    destination_port_ranges = ["9000"]
-    source_address_prefix = "*"
-    destination_address_prefix = "*"
-  }
+
 
 
 }
@@ -329,10 +319,6 @@ output "Go_SSH_Workernode" {
 
 output "Go_Jenkins" {
   value = "http://${azurerm_linux_virtual_machine.BuildNode.public_ip_address}:8080"
-}
-
-output "Go_SonaQube" {
-  value = "http://${azurerm_linux_virtual_machine.BuildNode.public_ip_address}:9000"
 }
 
 
