@@ -5,10 +5,6 @@ sudo apt -y upgrade
 sudo apt install openjdk-11-jdk -y
 sudo apt -y install jenkins
 sudo ufw allow 8080
-sysctl -w vm.max_map_count=524288
-sysctl -w fs.file-max=131072
-ulimit -n 131072
-ulimit -u 8192
 
  #groups for Docker access
       groupadd docker
