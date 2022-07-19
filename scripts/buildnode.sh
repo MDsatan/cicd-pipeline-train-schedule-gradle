@@ -6,6 +6,7 @@ sudo apt install openjdk-11-jdk -y
 sudo apt -y install jenkins
 sudo ufw allow 8080
 
+
  #groups for Docker access
       groupadd docker
       gpasswd -a azureuser docker
@@ -19,10 +20,17 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
     systemctl enable docker
 
     #SonarQube
+    sysctl -w vm.max_map_count=524288
+    sysctl -w fs.file-max=131072
+    ulimit -n 131072
+    ulimit -u 8192
     jenkins=$(id -u jenkins)
+    docker pull sonarqube:latest
     docker pull sonarsource/sonar-scanner-cli
     sudo mkdir -p /opt/sonarqube
     sudo chown -R jenkins:jenkins "/opt/sonarqube"
+    docker run -d -p 9000:9000 --user $jenkins --name sonarqube  sonarqube:latest
+#dont forget sonarqube-cli
 
 
 wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
