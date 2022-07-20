@@ -1,2 +1,6 @@
 node_modules
 .gradle
+/scripts/.terraform/
+/scripts/.terraform.lock.hcl
+/scripts/terraform.tfstate
+/scripts/terraform.tfstate.backup

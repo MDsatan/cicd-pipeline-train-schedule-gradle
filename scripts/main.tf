@@ -241,15 +241,21 @@ connection {
 }
 
 provisioner "file" {
-  source = "install_worker.sh"
-  destination = "/tmp/install_worker.sh"
+  source = "install_master.sh"
+  destination = "/tmp/install_master.sh"
 }
+provisioner "file" {
+  source = "~/.ssh/id_rsa"
+  destination = "/tmp/id_rsa"
+}
+
 
 provisioner "remote-exec" {
   inline = [
-    "chmod +x /tmp/install_worker.sh",
-    "echo $(azurerm_linux_virtual_machine.MasterNode.admin_password) | sudo -S /tmp/install_worker.sh",
-    "rm /tmp/install_worker.sh",
+    "chmod +x /tmp/install_master.sh",
+    "chmod 400 /tmp/id_rsa",
+    "echo $(azurerm_linux_virtual_machine.MasterNode.admin_password) | sudo -S /tmp/install_master.sh",
+    "rm /tmp/install_master.sh",
   ]
 }
 
@@ -308,17 +314,20 @@ provisioner "remote-exec" {
 
 
 output "Go_SSH_BuildNode" {
-  value = "ssh azureuser@${azurerm_linux_virtual_machine.BuildNode.public_ip_address}"
+  value = "ssh azureuser@${azurerm_linux_virtual_machine.BuildNode.public_ip_address} -o StrictHostKeyChecking=no"
 }
 output "Go_SSH_MasterNode" {
-  value = "ssh azureuser@${azurerm_linux_virtual_machine.MasterNode.public_ip_address}"
+  value = "ssh azureuser@${azurerm_linux_virtual_machine.MasterNode.public_ip_address} -o StrictHostKeyChecking=no"
 }
 output "Go_SSH_Workernode" {
-  value = "ssh azureuser@${azurerm_linux_virtual_machine.Workernode.public_ip_address}"
+  value = "ssh azureuser@${azurerm_linux_virtual_machine.Workernode.public_ip_address} -o StrictHostKeyChecking=no"
 }
 
 output "Go_Jenkins" {
   value = "http://${azurerm_linux_virtual_machine.BuildNode.public_ip_address}:8080"
+}
+output "Go_Sonar" {
+  value = "http://${azurerm_linux_virtual_machine.BuildNode.public_ip_address}:9090"
 }
 
 

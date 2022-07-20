@@ -4,17 +4,6 @@
 
 set -e
 
-#source /etc/lsb-release
-#if [ "$DISTRIB_RELEASE" != "20.04" ]; then
-#    echo "################################# "
-#    echo "############ WARNING ############ "
-#    echo "################################# "
-#    echo
-#    echo "This script only works on Ubuntu 20.04!"
-#    echo "You're using: ${DISTRIB_DESCRIPTION}"
-#    echo "Better ABORT with Ctrl+C. Or press any key to continue the install"
-#    read
-#fi
 
 KUBE_VERSION=1.23.6
 
@@ -170,4 +159,5 @@ rm -rf ${ETCDCTL_VERSION_FULL} ${ETCDCTL_VERSION_FULL}.tar.gz
 
 echo
 echo "### COMMAND TO ADD A WORKER NODE ###"
-kubeadm token create --print-join-command --ttl 0
+addcommand="sudo kubeadm token create --print-join-command --ttl 0"
+#ssh -i /tmp/id_rsa -o StrictHostKeyChecking=no  azureuser@workernode $addcommand
