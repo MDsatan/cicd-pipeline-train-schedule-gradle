@@ -4,3 +4,4 @@ node_modules
 /scripts/.terraform.lock.hcl
 /scripts/terraform.tfstate
 /scripts/terraform.tfstate.backup
+/scripts/.terraform.tfstate.lock.info

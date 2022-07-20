@@ -91,6 +91,19 @@ resource "azurerm_network_security_group" "NSG" {
     destination_address_prefix = "*"
   }
 
+    security_rule {
+    name                 = "Allow_HTTP_Application"
+    priority              = 102
+    access                = "Allow"
+    direction             = "Inbound"
+    protocol              = "Tcp"
+    source_port_range    = "*"
+    destination_port_ranges = ["3000"]
+    source_address_prefix = "*"
+    destination_address_prefix = "*"
+  }
+
+
 
 
 }

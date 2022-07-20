@@ -35,6 +35,6 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
 wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-sudo apt -y update && sudo apt install -y terraform gradle
+sudo apt -y update && sudo apt install -y terraform gradle npm
 sudo rm /bin/gradle
 sudo ln -s /usr/share/gradle/bin/gradle /bin/gradle
