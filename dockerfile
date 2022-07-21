@@ -18,4 +18,4 @@ WORKDIR /app
 EXPOSE 3000
 
 #RUN
-npm run
+RUN npm start
