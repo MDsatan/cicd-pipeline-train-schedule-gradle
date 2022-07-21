@@ -19,3 +19,9 @@ spec:
         image: mdsatan/cicd-pipeline-demo:latest
         ports:
         - containerPort: 3000
+
+#sudo kubectl apply -f deployment.yaml 
+#sudo kubectl expose deployment cicd-pipeline-demo-deployment --type=LoadBalancer --name=my-service
+#NAME         TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+#my-service   LoadBalancer   10.108.169.95   <pending>     3000:31510/TCP   59s
+#THIS IS SHITTY
