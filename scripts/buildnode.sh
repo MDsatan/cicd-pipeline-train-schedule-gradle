@@ -26,6 +26,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
     ulimit -u 8192
     jenkins=$(id -u jenkins)
     usermod -aG sudo jenkins
+    gpasswd -a jenkins docker
     docker pull sonarqube:latest
     docker pull sonarsource/sonar-scanner-cli
     sudo mkdir -p /opt/sonarqube
@@ -39,3 +40,6 @@ echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://
 sudo apt -y update && sudo apt install -y terraform gradle npm
 sudo rm /bin/gradle
 sudo ln -s /usr/share/gradle/bin/gradle /bin/gradle
+
+
+#Install "Docker Pipeline" to Jenkins
