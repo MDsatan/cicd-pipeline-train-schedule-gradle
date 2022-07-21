@@ -25,6 +25,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
     ulimit -n 131072
     ulimit -u 8192
     jenkins=$(id -u jenkins)
+    usermod -aG sudo jenkins
     docker pull sonarqube:latest
     docker pull sonarsource/sonar-scanner-cli
     sudo mkdir -p /opt/sonarqube
