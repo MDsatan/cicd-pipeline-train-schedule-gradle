@@ -13,9 +13,10 @@ HEALTHCHECK --interval=5s \
 # app content
 COPY . /app
 WORKDIR /app
+RUN npm install
 
 # tell docker what port to expose
 EXPOSE 3000
 
 #RUN
-RUN npm start
+CMD npm start
