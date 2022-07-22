@@ -49,6 +49,13 @@ node {
             ssh  -o StrictHostKeyChecking=no  azureuser@masternode sudo kubectl rollout status deployment/cicd-pipeline-demo
             ssh  -o StrictHostKeyChecking=no  azureuser@masternode sudo kubectl get deployments
             '''
+            }
+        sshagent(credentials:['id_rsa']){
+            sh '''
+            text=$(dig +short myip.opendns.com @resolver1.opendns.com)
+            echo Your Service is running at http://$text:30000
+            '''
+        }
+        
     }
-}
 }
