@@ -35,7 +35,7 @@ spec:
     port: 3000
     nodePort: 30000        
     name: http   
-  type: WebApplication     
+  type: LoadBalancer    
 
 #sudo kubectl apply -f deployment.yaml 
 #NAME         TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
