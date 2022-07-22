@@ -1,6 +1,12 @@
 # cicd-pipeline-train-schedule-gradle (fork for Security Automation learning)
 
-# Everything useful for the Job is in "scripts" folder
+## Why is it forked?
+This is a small project made for learning purposes.
+1) Using Terraform to deploy infrastructure in Azure
+2) Using Jenkins to deploy Jenkins Pipeline
+3) Deploying Jenkins Pipeline in Kubernetes Cluster
+4) Using SonarQube to analyze this project
+5) More to come...
 
 ## Original Descrtiption Below:
 This is a simple train schedule app written using nodejs. It is intended to be used as a sample application for a series of hands-on learning activities.
