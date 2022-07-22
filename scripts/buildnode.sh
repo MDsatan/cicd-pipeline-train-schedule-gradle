@@ -7,7 +7,7 @@ sudo apt -y install jenkins
 sudo ufw allow 8080
 # I wanted to install Docker Pipelines but this cli thing without a password it a little bit of a pain.
 #curl -Lv http://localhost:8080/jnlpJars/jenkins-cli.jar --output /tmp/jenkins-cli.jar
-#Also sorry, but you need to manually install Docker Pipelines and SSH Agent plugins.
+#Also sorry, but you need to manually install Docker Pipelines, SSH Agent, SonarScanner plugins.
 
 
  #groups for Docker access
