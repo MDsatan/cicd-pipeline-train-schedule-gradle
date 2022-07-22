@@ -31,7 +31,6 @@ node {
         }
     }
     stage('Kubernetes Deployment') {
-        steps {
             
         
         sshagent(credentials:['id_rsa']){ 
@@ -50,8 +49,6 @@ node {
             ssh  -o StrictHostKeyChecking=no  azureuser@masternode sudo kubectl rollout status deployment/cicd-pipeline-demo
             ssh  -o StrictHostKeyChecking=no  azureuser@masternode sudo kubectl get deployments
             '''
-
-    }
     }
 }
 }
