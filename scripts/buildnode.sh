@@ -4,12 +4,19 @@ sudo apt -y update
 sudo apt -y upgrade
 sudo apt install openjdk-11-jdk -y
 sudo apt -y install jenkins
+
 sudo ufw allow 8080
+# I wanted to install Docker Pipelines but this cli thing without a password it a little bit of a pain.
+curl -Lv http://localhost:8080/jnlpJars/jenkins-cli.jar --output /tmp/jenkins-cli.jar
 
 
  #groups for Docker access
       groupadd docker
       gpasswd -a azureuser docker
+      gpasswd -a jenkins docker
+
+#Need to restart Jenkins to make it work with docker after it's been installed.
+sudo service jenkins restart
 
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
@@ -26,7 +33,6 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
     ulimit -u 8192
     jenkins=$(id -u jenkins)
     usermod -aG sudo jenkins
-    gpasswd -a jenkins docker
     docker pull sonarqube:latest
     docker pull sonarsource/sonar-scanner-cli
     sudo mkdir -p /opt/sonarqube

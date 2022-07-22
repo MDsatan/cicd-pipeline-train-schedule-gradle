@@ -92,7 +92,7 @@ resource "azurerm_network_security_group" "NSG" {
   }
 
     security_rule {
-    name                 = "Allow_HTTP_Application"
+    name                 = "Allow_HTTP_Application_Debug"
     priority              = 102
     access                = "Allow"
     direction             = "Inbound"
@@ -102,6 +102,19 @@ resource "azurerm_network_security_group" "NSG" {
     source_address_prefix = "*"
     destination_address_prefix = "*"
   }
+
+      security_rule {
+    name                 = "Allow_HTTP_Application_Nodeport"
+    priority              = 103
+    access                = "Allow"
+    direction             = "Inbound"
+    protocol              = "Tcp"
+    source_port_range    = "*"
+    destination_port_ranges = ["30000"]
+    source_address_prefix = "*"
+    destination_address_prefix = "*"
+  }
+
 
 
 

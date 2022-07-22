@@ -1,9 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cicd-pipeline-demo-deployment
-  labels:
-    app: cicd-pipeline-demo
+  name: cicd-pipeline-demo
 spec:
   replicas: 1
   selector:
@@ -17,11 +15,29 @@ spec:
       containers:
       - name: cicd-pipeline-demo
         image: mdsatan/cicd-pipeline-demo:latest
-        ports:
+        imagePullPolicy: Always
+        ports: 
         - containerPort: 3000
+          name: http
+
+---
+
+kind: Service             
+apiVersion: v1            
+metadata:                 
+  name: cicd-pipeline-demo-service     
+spec:                     
+  selector:               
+    app: cicd-pipeline-demo           
+  ports:                  
+  - protocol: TCP         
+    targetPort: 3000      
+    port: 3000
+    nodePort: 30000        
+    name: http   
+  type: WebApplication     
 
 #sudo kubectl apply -f deployment.yaml 
-#sudo kubectl expose deployment cicd-pipeline-demo-deployment --type=LoadBalancer --name=my-service
 #NAME         TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 #my-service   LoadBalancer   10.108.169.95   <pending>     3000:31510/TCP   59s
 #THIS IS SHITTY
