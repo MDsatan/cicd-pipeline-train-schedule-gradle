@@ -31,15 +31,26 @@ node {
         }
     }
     stage('Kubernetes Deployment') {
+        steps {
+            
+        
         sshagent(credentials:['id_rsa']){ 
             sh ''' 
             ssh  -o StrictHostKeyChecking=no  azureuser@masternode sudo kubectl get service
             ssh  -o StrictHostKeyChecking=no  azureuser@masternode curl -La https://raw.githubusercontent.com/MDsatan/cicd-pipeline-train-schedule-gradle/master/deployment.yaml --output deployment.yaml
             ssh  -o StrictHostKeyChecking=no  azureuser@masternode sudo kubectl apply -f deployment.yaml
-            ssh  -o StrictHostKeyChecking=no  azureuser@masternode sudo kubectl set image deployment/cicd-pipeline-demo cicd-pipeline-demo=mdsatan/cicd-pipeline-demo:${env.BUILD_NUMBER}
-            ssh  -o StrictHostKeyChecking=no  azureuser@masternode sudo kubectl rollout status deployment/cicd-pipeline-demo
-            ssh  -o StrictHostKeyChecking=no  azureuser@masternode sudo kubectl get deployments
+           
           '''
         }
+        sshagent(credentials:['id_rsa']){
+        sh "ssh  -o StrictHostKeyChecking=no  azureuser@masternode sudo kubectl set image deployment/cicd-pipeline-demo cicd-pipeline-demo=mdsatan/cicd-pipeline-demo:${env.BUILD_NUMBER}"
+        }
+        sshagent(credentials:['id_rsa']){
+            sh '''
+            ssh  -o StrictHostKeyChecking=no  azureuser@masternode sudo kubectl rollout status deployment/cicd-pipeline-demo
+            ssh  -o StrictHostKeyChecking=no  azureuser@masternode sudo kubectl get deployments
+            '''
+
+    }
     }
 }

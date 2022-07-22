@@ -8,6 +8,12 @@ This is a small project made for learning purposes.
 4) Using SonarQube to analyze this project
 5) More to come...
 
+### Some things for manual configuration
+1) Docker Pipelines and SSH Agent plugins are required to be installed on the BuildNode Jenkins.
+2) Add id_rsa of azureuser on the BuildNode Jenkins. (ID: id_rsa)
+3) Add DockerHub credentials on the BuildNode Jenkins. (ID: docker-hub-credentials)
+
+
 ## Original Descrtiption Below:
 This is a simple train schedule app written using nodejs. It is intended to be used as a sample application for a series of hands-on learning activities.
 
