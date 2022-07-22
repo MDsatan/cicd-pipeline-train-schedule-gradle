@@ -114,7 +114,17 @@ resource "azurerm_network_security_group" "NSG" {
     source_address_prefix = "*"
     destination_address_prefix = "*"
   }
-
+      security_rule {
+    name                 = "Allow_HTTP_SonarQube"
+    priority              = 104
+    access                = "Allow"
+    direction             = "Inbound"
+    protocol              = "Tcp"
+    source_port_range    = "*"
+    destination_port_ranges = ["9000"]
+    source_address_prefix = "*"
+    destination_address_prefix = "*"
+  }
 
 
 

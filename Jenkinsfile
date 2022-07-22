@@ -50,6 +50,12 @@ node {
             ssh  -o StrictHostKeyChecking=no  azureuser@masternode sudo kubectl get deployments
             '''
             }
-        
     }
+
+      stage('SonarQube Analysis') {
+    def scannerHome = tool 'SonarScanner';
+    withSonarQubeEnv() {
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
+  }
 }
