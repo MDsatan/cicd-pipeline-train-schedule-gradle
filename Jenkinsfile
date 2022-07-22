@@ -31,4 +31,10 @@ node {
             app.push("latest")
         }
     }
+    stage('Kubernetes Deployment') {
+        steps{
+            sshagent(credentials:['id_rsa']){
+                sh 'ssh  -o StrictHostKeyChecking=no  azureuser@masternode sudo kubectl get service'
+    }
+
 }

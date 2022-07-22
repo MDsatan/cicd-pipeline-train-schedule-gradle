@@ -4,10 +4,10 @@ sudo apt -y update
 sudo apt -y upgrade
 sudo apt install openjdk-11-jdk -y
 sudo apt -y install jenkins
-
 sudo ufw allow 8080
 # I wanted to install Docker Pipelines but this cli thing without a password it a little bit of a pain.
-curl -Lv http://localhost:8080/jnlpJars/jenkins-cli.jar --output /tmp/jenkins-cli.jar
+#curl -Lv http://localhost:8080/jnlpJars/jenkins-cli.jar --output /tmp/jenkins-cli.jar
+#Also sorry, but you need to manually install Docker Pipelines and SSH Agent plugins.
 
 
  #groups for Docker access
@@ -46,6 +46,3 @@ echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://
 sudo apt -y update && sudo apt install -y terraform gradle npm
 sudo rm /bin/gradle
 sudo ln -s /usr/share/gradle/bin/gradle /bin/gradle
-
-
-#Install "Docker Pipeline" to Jenkins
