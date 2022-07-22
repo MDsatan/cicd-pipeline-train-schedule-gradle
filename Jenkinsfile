@@ -32,9 +32,11 @@ node {
     }
     stage('Kubernetes Deployment') {
         sshagent(credentials:['id_rsa']){ 
-            sh 'ssh  -o StrictHostKeyChecking=no  azureuser@masternode "sudo kubectl get service && \
-           curl -La https://raw.githubusercontent.com/MDsatan/cicd-pipeline-train-schedule-gradle/master/deployment.yaml && \
-           && sudo kubectl apply -f deployment.yaml"'
+            sh ''' 
+            ssh  -o StrictHostKeyChecking=no  azureuser@masternode sudo kubectl get service
+            ssh  -o StrictHostKeyChecking=no  azureuser@masternode curl -La https://raw.githubusercontent.com/MDsatan/cicd-pipeline-train-schedule-gradle/master/deployment.yaml --output deployment.yaml
+            ssh  -o StrictHostKeyChecking=no  azureuser@masternode sudo kubectl apply -f deployment.yaml
+          '''
         }
     }
 }
