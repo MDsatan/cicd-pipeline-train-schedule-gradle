@@ -36,5 +36,7 @@ node {
             sshagent(credentials:['id_rsa']){
                 sh 'ssh  -o StrictHostKeyChecking=no  azureuser@masternode sudo kubectl get service'
     }
+        }
 
+}
 }
