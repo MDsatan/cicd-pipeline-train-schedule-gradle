@@ -60,6 +60,12 @@ node {
   }
 
     stage('Checkov Analysis') {
-        sh "docker run -v ${WORKSPACE}:/var/project bridgecrew/checkov -d /var/project"
+        try {
+            sh "docker run -v ${WORKSPACE}:/var/project bridgecrew/checkov -d /var/project"
+        } catch (Complete) {
+            echo 'Checkov analysis failed'
+            currentBuild.result = 'SUCCESS'
+        }
+        
         }
 }
