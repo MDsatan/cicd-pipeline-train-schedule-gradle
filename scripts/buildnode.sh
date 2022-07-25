@@ -3,7 +3,6 @@ sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sour
 sudo apt -y update
 sudo apt -y upgrade
 sudo apt install openjdk-11-jdk -y
-
 sudo apt -y install jenkins
 sudo ufw allow 8080
 # I wanted to install Docker Pipelines but this cli thing without a password it a little bit of a pain.
@@ -38,6 +37,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
     #Containers in use
     docker pull sonarqube:latest
     docker pull bridgecrew/checkov
+    docker pull owasp/zap2docker-stable
 
     #Configure Containers
     sudo mkdir -p /opt/sonarqube

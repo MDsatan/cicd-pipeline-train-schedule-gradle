@@ -68,4 +68,13 @@ node {
         }
         
         }
+
+    stage ('OWASP ZAP Scan') {
+        try {
+            sh "docker run -i owasp/zap2docker-stable zap-cli quick-scan --self-contained --start-options '-config api.disablekey=true' http://workernode:8080/"
+        } catch (Complete) {
+            echo 'OWASP ZAP Scan failed'
+            currentBuild.result = 'SUCCESS'
+        }
+    }
 }

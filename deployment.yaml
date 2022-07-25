@@ -36,8 +36,3 @@ spec:
     nodePort: 30000        
     name: http   
   type: LoadBalancer    
-
-#sudo kubectl apply -f deployment.yaml 
-#NAME         TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
-#my-service   LoadBalancer   10.108.169.95   <pending>     3000:31510/TCP   59s
-#THIS IS SHITTY
