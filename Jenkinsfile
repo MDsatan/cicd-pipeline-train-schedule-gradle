@@ -60,6 +60,6 @@ node {
   }
 
     stage('Checkov Analysis') {
-        sh "docker run -v $(pwd):/var/project bridgecrew/checkov -d /var/project"
+        sh "docker run -v ${WORKSPACE}:/var/project bridgecrew/checkov -d /var/project"
         }
 }
