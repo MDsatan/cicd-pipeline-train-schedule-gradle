@@ -58,4 +58,8 @@ node {
       sh "${scannerHome}/bin/sonar-scanner"
     }
   }
+
+    stage('Checkov Analysis') {
+        sh "docker run -v $(pwd):/var/project bridgecrew/checkov -d /var/project"
+        }
 }
