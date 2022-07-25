@@ -334,14 +334,12 @@ connection {
 
 provisioner "file" {
   source = "install_worker.sh"
-  destination = "/tmp/install_worker.sh"
+  destination = "/home/azureuser/install_worker.sh"
 }
 
 provisioner "remote-exec" {
   inline = [
-    "chmod +x /tmp/install_worker.sh",
-    "echo $(azurerm_linux_virtual_machine.Workernode.admin_password) | sudo -S /tmp/install_worker.sh",
-    "rm /tmp/install_worker.sh",
+    "chmod +x /home/azureuser/install_worker.sh",
   ]
 }
 }     

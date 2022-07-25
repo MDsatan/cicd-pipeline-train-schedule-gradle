@@ -159,5 +159,6 @@ rm -rf ${ETCDCTL_VERSION_FULL} ${ETCDCTL_VERSION_FULL}.tar.gz
 
 echo
 echo "### COMMAND TO ADD A WORKER NODE ###"
-addcommand="sudo kubeadm token create --print-join-command --ttl 0"
-ssh -i /tmp/id_rsa -o StrictHostKeyChecking=no  azureuser@workernode $addcommand
+addcommand=$(sudo kubeadm token create --print-join-command --ttl 0)
+ssh -i /tmp/id_rsa -o StrictHostKeyChecking=no  azureuser@workernode sudo home/azureuser/install_worker.sh
+ssh -i /tmp/id_rsa -o StrictHostKeyChecking=no  azureuser@workernode sudo $addcommand
