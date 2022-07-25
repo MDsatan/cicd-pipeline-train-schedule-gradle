@@ -7,7 +7,7 @@ sudo apt -y install jenkins
 sudo ufw allow 8080
 # I wanted to install Docker Pipelines but this cli thing without a password it a little bit of a pain.
 #curl -Lv http://localhost:8080/jnlpJars/jenkins-cli.jar --output /tmp/jenkins-cli.jar
-#Also sorry, but you need to manually install Docker Pipelines, SSH Agent, SonarScanner plugins.
+#Also sorry, but you need to manually install Docker Pipeline, SSH Agent, SonarQube Scanner plugins.
 
 
  #groups for Docker access
@@ -38,7 +38,6 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
     sudo mkdir -p /opt/sonarqube
     sudo chown -R jenkins:jenkins "/opt/sonarqube"
     docker run -d -p 9000:9000 --user $jenkins --name sonarqube  sonarqube:latest
-#dont forget sonarqube-cli
 
 
 wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
