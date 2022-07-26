@@ -6,7 +6,9 @@ This is a small project made for learning purposes.
 2) Using Jenkins to deploy Jenkins Pipeline
 3) Deploying Jenkins Pipeline in Kubernetes Cluster
 4) Using SonarQube to analyze this project
-5) More to come...
+5) Using Checkov to analyze this project
+6) Using OWASP ZAP to analyze running Application
+7) More to come...
 
 ### Some things for manual configuration:
 1) Docker Pipelines and SSH Agent plugins are required to be installed on the BuildNode Jenkins.
