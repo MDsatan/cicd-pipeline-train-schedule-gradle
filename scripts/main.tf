@@ -12,6 +12,15 @@ resource "azurerm_resource_group" "Mentee-Sergey_Zelentsov" {
   }
 }
 
+resource "azurerm_user_assigned_identity" "aztechaccount" {
+  name                = "aztechaccount"
+  resource_group_name = "${azurerm_resource_group.Mentee-Sergey_Zelentsov.name}"
+  location = "${azurerm_resource_group.Mentee-Sergey_Zelentsov.location}"
+  tags = "${azurerm_resource_group.Mentee-Sergey_Zelentsov.tags}"
+  }
+  
+
+
 resource "azurerm_virtual_network" "vnet" {
   name                = "VNET"
   location            = azurerm_resource_group.Mentee-Sergey_Zelentsov.location
