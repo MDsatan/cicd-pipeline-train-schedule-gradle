@@ -3,6 +3,11 @@ provider "azurerm" {
   features {}
   }
 
+data "azurerm_subscription" "primary" {
+}
+data "azurerm_client_config" "conf" {
+}
+
 resource "azurerm_resource_group" "Mentee-Sergey_Zelentsov" {
   name     = "Mentee-Sergey_Zelentsov"
   location = "eastus" #eastus #eastasia
@@ -12,6 +17,7 @@ resource "azurerm_resource_group" "Mentee-Sergey_Zelentsov" {
   }
 }
 
+#Create managed identity for the resource group
 resource "azurerm_user_assigned_identity" "aztechaccount" {
   name                = "aztechaccount"
   resource_group_name = "${azurerm_resource_group.Mentee-Sergey_Zelentsov.name}"
@@ -19,12 +25,13 @@ resource "azurerm_user_assigned_identity" "aztechaccount" {
   tags = "${azurerm_resource_group.Mentee-Sergey_Zelentsov.tags}"
   }
 
-resource "azurerm_role_assignment" "contributor" {
+#Assign techaccount to fully rule the Managed Resource Group
+resource "azurerm_role_assignment" "Contributor" {
   scope                = "${azurerm_resource_group.Mentee-Sergey_Zelentsov.id}"
-  role_definition_id   = "${azurerm_role_definition.contributor.id}"
-  principal_id         = "${azurerm_user_assigned_identity.aztechaccount.identity_ids[0]}"
-  principal_id_type    = "UserAssigned"
+  role_definition_name = "Contributor"
+principal_id        = "${azurerm_user_assigned_identity.aztechaccount.principal_id}"
   }
+
   
 
 
@@ -379,7 +386,7 @@ output "Go_Jenkins" {
 output "Go_Sonar" {
   value = "http://${azurerm_linux_virtual_machine.BuildNode.public_ip_address}:9000"
 }
-output "Your App is gonna be available on:" {
+output "your_app_is_gonna_be_available_on" {
   value = "${azurerm_linux_virtual_machine.Workernode.public_ip_address}:30000"
 }
 
