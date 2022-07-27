@@ -14,12 +14,6 @@ node {
         app = docker.build("mdsatan/cicd-pipeline-demo")
     }
 
-    stage('Test image') {
-        /* Ideally, we would run a test framework against our image. */
-        app.inside {
-            sh 'echo "Its alive"'
-        }
-    }
 
     stage('Push image') {
         /* Finally, we'll push the image with two tags:

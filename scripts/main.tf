@@ -18,6 +18,13 @@ resource "azurerm_user_assigned_identity" "aztechaccount" {
   location = "${azurerm_resource_group.Mentee-Sergey_Zelentsov.location}"
   tags = "${azurerm_resource_group.Mentee-Sergey_Zelentsov.tags}"
   }
+
+resource "azurerm_role_assignment" "contributor" {
+  scope                = "${azurerm_resource_group.Mentee-Sergey_Zelentsov.id}"
+  role_definition_id   = "${azurerm_role_definition.contributor.id}"
+  principal_id         = "${azurerm_user_assigned_identity.aztechaccount.identity_ids[0]}"
+  principal_id_type    = "UserAssigned"
+  }
   
 
 
@@ -372,5 +379,7 @@ output "Go_Jenkins" {
 output "Go_Sonar" {
   value = "http://${azurerm_linux_virtual_machine.BuildNode.public_ip_address}:9000"
 }
-
+output "Your App is gonna be available on:" {
+  value = "${azurerm_linux_virtual_machine.Workernode.public_ip_address}:30000"
+}
 
