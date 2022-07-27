@@ -15,6 +15,7 @@ This is a small project made for learning purposes.
 2) Add id_rsa of azureuser on the BuildNode Jenkins. (ID: id_rsa)
 3) Add DockerHub credentials on the BuildNode Jenkins. (ID: docker-hub-credentials)
 4) Add SonarQube credentials on the BuildNode Jenkins. (ID: token)
+5) Add Azure Managed Credentials on the BuildNode Jenkins. (ID: azure-credentials)
 
 
 ## Original Descrtiption Below:

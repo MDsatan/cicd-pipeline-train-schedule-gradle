@@ -370,7 +370,7 @@ output "Go_Jenkins" {
   value = "http://${azurerm_linux_virtual_machine.BuildNode.public_ip_address}:8080"
 }
 output "Go_Sonar" {
-  value = "http://${azurerm_linux_virtual_machine.BuildNode.public_ip_address}:9090"
+  value = "http://${azurerm_linux_virtual_machine.BuildNode.public_ip_address}:9000"
 }
 
 
