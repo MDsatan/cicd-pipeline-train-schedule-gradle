@@ -71,4 +71,9 @@ node {
             currentBuild.result = 'SUCCESS'
         }
     }
+  stage(' AZ Login') {
+            steps {
+                withCredentials([AzureMsiCredentials('azure-credentials')]) {
+                    sh 'az login -i'
+                }
 }
