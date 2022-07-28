@@ -259,7 +259,8 @@ provisioner "remote-exec" {
     "echo $(azurerm_linux_virtual_machine.BuildNode.admin_password) | sudo -S /tmp/buildnode.sh",
     "rm /tmp/buildnode.sh",
     "sudo snap install terraform --classic",
-    "sudo mv /tmp/id_rsa /var/lib/jenkins/id_rsa"
+    "sudo mv /tmp/id_rsa /var/lib/jenkins/id_rsa",
+    "sudo cat /var/lib/jenkins/secrets/initialAdminPassword"
   ]
 }
 

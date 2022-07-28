@@ -7,11 +7,11 @@ sudo apt -y install jenkins
 sudo apt -y install azure-cli
 sudo ufw allow 8080
 # I wanted to install Docker Pipelines but this cli thing without a password it a little bit of a pain.
-curl -Lv http://localhost:8080/jnlpJars/jenkins-cli.jar --output /tmp/jenkins-cli.jar
+curl -La http://localhost:8080/jnlpJars/jenkins-cli.jar --output jenkins-cli.jar
 jenkinspass=$(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)
-java -jar jenkins-cli.jar -s http://localhost:8080 -webSocket -auth admin:$jenkinspass install-plugin ssh-agent:295.v9ca_a_1c7cc3a_a_
-java -jar jenkins-cli.jar -s http://localhost:8080 -webSocket -auth admin:$jenkinspass install-plugin docker-workflow:1.29
-java -jar jenkins-cli.jar -s http://localhost:8080 -webSocket -auth admin:$jenkinspass install-plugin sonar:2.14
+java -jar jenkins-cli.jar -s http://localhost:8080 -webSocket -auth admin:$jenkinspass install-plugin sonar:2.14 docker-workflow:1.29 ssh-agent:295.v9ca_a_1c7cc3a_a_
+java -jar jenkins-cli.jar -s http://localhost:8080 -webSocket -auth admin:$jenkinspass restart
+
 
  #groups for Docker access
       groupadd docker
