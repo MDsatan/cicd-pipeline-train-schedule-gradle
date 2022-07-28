@@ -26,6 +26,18 @@ resource "azurerm_public_ip" "workernode_public_ip" {
       author = "Sergei_Zelentsov@epam.com"
     }
 }
+
+
+resource "azurerm_virtual_network" "vnet" {
+  name                = "VNET"
+  location            = azurerm_resource_group.Mentee-Sergey_Zelentsov.location
+  resource_group_name = azurerm_resource_group.Mentee-Sergey_Zelentsov.name
+  tags = {
+      usage  = "Edu"
+      author = "Sergei_Zelentsov@epam.com"
+    }
+  address_space = ["10.0.0.0/16"]
+}
 resource "azurerm_subnet" "subnet" {
   name                 = "subnet"
     resource_group_name  = azurerm_resource_group.Mentee-Sergey_Zelentsov.name
