@@ -9,13 +9,22 @@ This is a small project made for learning purposes.
 5) Using Checkov to analyze this project
 6) Using OWASP ZAP to analyze running Application
 7) More to come...
+8) Plan to Scan docker image with Trivy/Hadolint/Clair/Anchore
 
 ### Some things for manual configuration:
+#### Credentials:
 1) Docker Pipelines and SSH Agent plugins are required to be installed on the BuildNode Jenkins.
 2) Add id_rsa of azureuser on the BuildNode Jenkins. (ID: id_rsa)
 3) Add DockerHub credentials on the BuildNode Jenkins. (ID: docker-hub-credentials)
 4) Add SonarQube credentials on the BuildNode Jenkins. (ID: token)
 5) Add Azure Managed Credentials on the BuildNode Jenkins. (ID: azure-credentials)
+#### Jenkins Plugins:
+1) Docker Pipeline, 
+2) SSH Agent, 
+3) SonarQube Scanner, 
+4) Azure Credentials plugins.
+
+
 
 
 ## Original Descrtiption Below:
