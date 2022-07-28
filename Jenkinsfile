@@ -72,8 +72,7 @@ node {
         }
     }
   stage(' AZ Login'){
-                withCredentials([AzureMsiCredentials('azure-credentials')]) {
-                    sh 'az login -i'
-                }
+                
+                sh 'az login -i'
                  }
 }
