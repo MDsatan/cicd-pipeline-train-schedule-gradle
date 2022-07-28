@@ -11,7 +11,7 @@ node {
         sh '''
         az login -i
         terraform init 
-        terraform apply k8.tf --auto-approve
+        terraform apply --auto-approve
     '''
     }
 
