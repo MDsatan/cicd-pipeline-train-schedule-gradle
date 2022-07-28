@@ -5,8 +5,7 @@ provider "azurerm" {
 
 data "azurerm_subscription" "primary" {
 }
-data "azurerm_client_config" "conf" {
-}
+
 
 resource "azurerm_resource_group" "Mentee-Sergey_Zelentsov" {
   name     = "Mentee-Sergey_Zelentsov"
