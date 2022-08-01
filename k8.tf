@@ -90,12 +90,6 @@ resource "azurerm_network_interface" "NIC3" {
     }
 }
 
-# Create SSH key
-resource "tls_private_key" "access_ssh" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
-
 #MasterVM
 
 resource "azurerm_linux_virtual_machine" "MasterNode" {
@@ -119,7 +113,7 @@ resource "azurerm_linux_virtual_machine" "MasterNode" {
   }
   admin_ssh_key {
     username   = "azureuser"
-    public_key = file("~/.ssh/id_rsa.pub")
+    public_key = file("/var/lib/jenkins/id_rsa.pub")
   }
 
 connection {
@@ -127,7 +121,7 @@ connection {
   host = azurerm_linux_virtual_machine.MasterNode.private_ip_address
   port = 22
   user = azurerm_linux_virtual_machine.MasterNode.admin_username
-  private_key = file("~/.ssh/id_rsa")
+  private_key = file("/var/lib/jenkins/id_rsa")
 }
 
 provisioner "file" {
@@ -135,7 +129,7 @@ provisioner "file" {
   destination = "/tmp/install_master.sh"
 }
 provisioner "file" {
-  source = "~/.ssh/id_rsa"
+  source = "/var/lib/jenkins/id_rsa"
   destination = "/tmp/id_rsa"
 }
 
@@ -175,7 +169,7 @@ resource "azurerm_linux_virtual_machine" "Workernode" {
   }
   admin_ssh_key {
     username   = "azureuser"
-    public_key = file("~/.ssh/id_rsa.pub")
+    public_key = file("/var/lib/jenkins/id_rsa.pub")
   }
 
 connection {
@@ -183,7 +177,7 @@ connection {
   host = azurerm_linux_virtual_machine.Workernode.private_ip_address
   port = 22
   user = azurerm_linux_virtual_machine.Workernode.admin_username
-  private_key = file("~/.ssh/id_rsa")
+  private_key = file("/var/lib/jenkins/id_rsa")
 }
 
 provisioner "file" {

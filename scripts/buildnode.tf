@@ -207,6 +207,10 @@ provisioner "file" {
   destination = "/tmp/id_rsa"
 }
 provisioner "file" {
+  source = "~/.ssh/id_rsa.pub"
+  destination = "/tmp/id_rsa.pub"
+}
+provisioner "file" {
   source = "jenkinsjob.xml"
   destination = "/tmp/jenkinsjob.xml"
 }
@@ -218,7 +222,8 @@ provisioner "remote-exec" {
     "echo $(azurerm_linux_virtual_machine.BuildNode.admin_password) | sudo -S /tmp/buildnode.sh",
     "rm /tmp/buildnode.sh",
     "sudo snap install terraform --classic",
-    "sudo mv /tmp/id_rsa /var/lib/jenkins/id_rsa"
+    "sudo mv /tmp/id_rsa /var/lib/jenkins/id_rsa",
+    "sudo mv /tmp/id_rsa.pub /var/lib/jenkins/id_rsa.pub"
   ]
 }
 }     
