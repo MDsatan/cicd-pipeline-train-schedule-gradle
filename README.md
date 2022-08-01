@@ -10,6 +10,7 @@ This is a small project made for learning purposes.
 6) Using OWASP ZAP to analyze running Application
 7) More to come...
 8) Plan to Scan docker image with Trivy/Hadolint/Clair/Anchore
+9) SAST Scanner on GitHub project node
 
 ### Some things for manual configuration:
 #### Credentials:

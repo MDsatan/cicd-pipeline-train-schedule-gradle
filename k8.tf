@@ -131,7 +131,7 @@ connection {
 }
 
 provisioner "file" {
-  source = "install_master.sh"
+  source = "/scripts/install_master.sh"
   destination = "/tmp/install_master.sh"
 }
 provisioner "file" {
