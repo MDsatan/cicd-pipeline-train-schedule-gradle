@@ -17,11 +17,10 @@ This is a small project made for learning purposes.
 
 ### Some things for manual configuration:
 #### Credentials:
-1) Docker Pipelines and SSH Agent plugins are required to be installed on the BuildNode Jenkins.
-2) Add id_rsa of azureuser on the BuildNode Jenkins. (ID: id_rsa)
-3) Add DockerHub credentials on the BuildNode Jenkins. (ID: docker-hub-credentials)
-4) Add SonarQube credentials on the BuildNode Jenkins. (ID: token)
-5) Add Azure Managed Credentials on the BuildNode Jenkins. (ID: azure-credentials)
+1) Add id_rsa of azureuser on the BuildNode Jenkins. (ID: id_rsa)
+2) Add DockerHub credentials on the BuildNode Jenkins. (ID: docker-hub-credentials)
+3) Add SonarQube credentials on the BuildNode Jenkins. (ID: token)
+4) Add Azure Managed Credentials on the BuildNode Jenkins. (ID: azure-credentials)
 #### Jenkins Plugins:
 1) Docker Pipeline, 
 2) SSH Agent, 
